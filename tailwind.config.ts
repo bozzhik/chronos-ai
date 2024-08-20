@@ -1,11 +1,22 @@
 import type {Config} from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
+import {fontFamily} from 'tailwindcss/defaultTheme'
 
 const config = {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   prefix: '',
   theme: {
+    screens: {
+      xl: {max: '1536px'},
+      lg: {max: '1280px'},
+      md: {max: '1024px'},
+      sm: {max: '428px'},
+    },
+    fontFamily: {
+      advent: ['Advent', ...fontFamily.mono],
+      sans: ['Manrope', ...fontFamily.sans],
+    },
     extend: {
       colors: {
         background: 'var(--background)',
