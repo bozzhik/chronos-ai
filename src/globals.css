@@ -28,4 +28,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  mark {
+    @apply bg-primary text-background px-1.5 py-0.5;
+  }
 }
