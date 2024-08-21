@@ -13,6 +13,7 @@ const promptVariants = {
 
 export default function Prompt({type = 'ai', text, className}: Props) {
   const Tag = type === 'ai' ? 'h1' : 'p'
+  const displayText = type === 'user' ? `<span class="block mt-2 sm:mt-1 tracking-[-0.15em]">${`>>`}</span> ${text}` : text
 
-  return <Tag className={cn('font-advent !leading-none tracking-tight', promptVariants[type], className)} dangerouslySetInnerHTML={{__html: text || ''}}></Tag>
+  return <Tag className={cn('font-advent !leading-none tracking-tight', type === 'user' ? 'inline-flex gap-8 sm:gap-4' : '', promptVariants[type], className)} dangerouslySetInnerHTML={{__html: displayText || ''}}></Tag>
 }
