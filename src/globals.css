@@ -9,7 +9,11 @@
     --background: #eee;
     --foreground: #0a0a0a;
     --card: #dbdbdb;
-    --primary: #8f64ff;
+
+    --primary: #2ad751;
+    --primary-shadow: #2ad75190;
+    --secondary: #d5ffc2;
+    --secondary-shadow: #d5ffc290;
   }
 
   .dark {

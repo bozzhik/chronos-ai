@@ -21,11 +21,16 @@ const config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        card: {
-          DEFAULT: 'var(--card)',
-        },
         primary: {
           DEFAULT: 'var(--primary)',
+          shadow: 'var(--primary-shadow)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          shadow: 'var(--secondary-shadow)',
+        },
+        card: {
+          DEFAULT: 'var(--card)',
         },
       },
       keyframes: {
