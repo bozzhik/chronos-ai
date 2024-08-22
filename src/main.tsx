@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HelloPage from '@/pages/hello.tsx'
 import PlayPage from '@/pages/playground'
+import AboutPage from '@/pages/about'
 
 import NotFound from '@/pages/etc/not-found'
 
@@ -12,13 +13,17 @@ import Analytics from '#/Global/Analytics'
 
 const router = createBrowserRouter([
   {
-    path: appPaths.home,
+    path: appPaths.hello,
     element: <HelloPage />,
     errorElement: <NotFound />,
   },
   {
     path: appPaths.playground,
     element: <PlayPage />,
+  },
+  {
+    path: appPaths.about,
+    element: <AboutPage />,
   },
 ])
 

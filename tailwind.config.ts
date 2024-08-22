@@ -54,7 +54,6 @@ const config = {
     plugin(function sizePlugin(api) {
       api.matchUtilities({s: (value) => ({width: value, height: value})}, {values: api.theme('width')})
     }),
-    require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
   ],
 } satisfies Config

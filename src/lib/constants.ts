@@ -1,5 +1,5 @@
 export const appPaths = {
-  home: '/',
+  hello: '/',
   playground: '/playground',
   about: '/about',
 }
