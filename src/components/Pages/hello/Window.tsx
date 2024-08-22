@@ -2,6 +2,7 @@ import {isMobile} from '@bozzhik/is-mobile'
 import {appPaths} from '@/lib/constants'
 
 import {Link} from 'react-router-dom'
+import Typography from '#/UI/Typography'
 import Button from '#/UI/Button'
 
 const windowData = {
@@ -32,8 +33,9 @@ export default function Window() {
               GigaChat
             </a>
           </div>
-          <h1 className="font-semibold tracking-tighter text-center text-7xl sm:text-5xl" dangerouslySetInnerHTML={{__html: heading}} />
-          <p className="text-xl sm:text-lg max-w-[50ch] sm:max-w-[25ch] font-medium tracking-tight text-center whitespace-pre-line text-neutral-400"> {!isMobile ? text.desktop : text.mobile} </p>
+
+          <Typography className="text-center" type="heading" text={heading} />
+          <Typography className="text-center max-w-[50ch] sm:max-w-[25ch]" text={isMobile ? text.mobile : text.desktop} />
         </div>
 
         <div className="flex flex-col items-center gap-1.5 sm:gap-1">
