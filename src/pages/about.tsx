@@ -5,6 +5,7 @@ import Container from '#/Global/Container'
 import Button from '#/UI/Button'
 import Prompt from '#/UI/Prompt'
 import Typography from '#/UI/Typography'
+import Fragment from '##/about/Fragment'
 
 import {ArrowLeft} from 'lucide-react'
 
@@ -46,7 +47,8 @@ export default function AboutPage() {
           <Button to={appPaths.hello} variant="secondary" className="w-full">
             <ArrowLeft />
           </Button>
-          <div className="w-full h-[35vh] bg-neutral-900 rounded-xl"></div>
+
+          <Fragment />
         </div>
 
         <section className="flex flex-col gap-8 mt-4">
