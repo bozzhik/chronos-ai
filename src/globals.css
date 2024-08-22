@@ -7,7 +7,7 @@
 @layer base {
   :root {
     --background: #eee;
-    --foreground: #0a0a0a;
+    --foreground: #000000;
     --card: #dbdbdb;
 
     --primary: #2ad751;
@@ -17,7 +17,7 @@
   }
 
   .dark {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ffffff;
     --card: #151515;
   }
