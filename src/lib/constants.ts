@@ -3,3 +3,5 @@ export const appPaths = {
   playground: '/playground',
   about: '/about',
 }
+
+export const screenHeight = 'h-screen !h-svh'
