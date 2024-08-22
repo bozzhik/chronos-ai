@@ -16,6 +16,7 @@ const config = {
     fontFamily: {
       advent: ['Advent', ...fontFamily.mono],
       sans: ['Manrope', ...fontFamily.sans],
+      mono: [...fontFamily.mono],
     },
     extend: {
       colors: {
