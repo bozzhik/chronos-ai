@@ -1,6 +1,12 @@
+import {ReactMatrixAnimation} from 'react-matrix-animation'
+import {appPaths} from '@/lib/constants'
+
 import Container from '#/Global/Container'
+import Button from '#/UI/Button'
 import Prompt from '#/UI/Prompt'
 import Typography from '#/UI/Typography'
+
+import {ArrowLeft} from 'lucide-react'
 
 type BlockNames = 'hero' | 'why'
 type TokenBlocks = {
@@ -34,12 +40,26 @@ const aboutData: TokenBlocks = {
 
 export default function AboutPage() {
   return (
-    <Container className="max-w-2xl xl:max-w-xl my-20 space-y-20">
-      <section className="flex flex-col gap-10">
-        {Object.values(aboutData).map((block, index) => (
-          <BlockComponent key={index} token={block} />
-        ))}
+    <Container className="max-w-2xl xl:max-w-xl mb-28 xl:mb-20 sm:mb-10">
+      <section className="my-10 space-y-8">
+        <div className="space-y-4">
+          <Button to={appPaths.hello} variant="secondary" className="w-full">
+            <ArrowLeft />
+          </Button>
+          <div className="w-full h-[35vh] bg-neutral-900 rounded-xl"></div>
+        </div>
+
+        <section className="flex flex-col gap-8 mt-4">
+          {Object.values(aboutData).map((block, index) => (
+            <BlockComponent key={index} token={block} />
+          ))}
+        </section>
       </section>
+
+      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-30">
+        <div className="absolute inset-0 backdrop-blur-[6px] s-full"></div>
+        <ReactMatrixAnimation fontColor="#FFFFFF" />
+      </div>
     </Container>
   )
 }

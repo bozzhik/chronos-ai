@@ -10,7 +10,7 @@ export default function HelloPage() {
       <Window />
 
       <div className="absolute inset-0 flex items-center justify-center w-screen h-full m-auto -z-20">
-        <ReactMatrixAnimation tileSize={20} fadeFactor={0.05} fontColor="#303030" />
+        <ReactMatrixAnimation fontColor="#303030" />
       </div>
     </Container>
   )
