@@ -13,7 +13,7 @@ const buttonStyles = {
   hover: {
     variants: {
       primary: 'border-[3px] hover:ring-[2px] hover:ring-primary active:ring-[2px] active:ring-primary focus:ring-[2px] focus:ring-primary',
-      secondary: 'border-[3px] ring-[2px] ring-neutral-900 hover:ring-0 active:ring-0 focus:ring-0',
+      secondary: 'border-[3px] ring-[2px] ring-neutral-900 hover:text-primary active:text-primary focus:text-primary',
     },
   },
   variants: {

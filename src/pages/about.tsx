@@ -7,7 +7,7 @@ import Prompt from '#/UI/Prompt'
 import Typography from '#/UI/Typography'
 import Fragment from '##/about/Fragment'
 
-import {ArrowLeft} from 'lucide-react'
+import {ArrowUpLeft} from 'lucide-react'
 
 type BlockNames = 'hero' | 'why'
 type TokenBlocks = {
@@ -19,14 +19,12 @@ type Block = {
   text: string
 }
 
-const BlockComponent: React.FC<{token: Block}> = ({token}) => {
-  return (
-    <article className="space-y-2">
-      <Prompt text={token.heading} />
-      <Typography className="text-white font-normal tracking-[-0.015em]" text={token.text} />
-    </article>
-  )
-}
+const BlockComponent: React.FC<{token: Block}> = ({token}) => (
+  <article className="space-y-2">
+    <Prompt text={token.heading} />
+    <Typography className="text-white font-normal tracking-[-0.015em]" text={token.text} />
+  </article>
+)
 
 const aboutData: TokenBlocks = {
   hero: {
@@ -44,8 +42,8 @@ export default function AboutPage() {
     <Container className="max-w-2xl xl:max-w-xl mb-28 xl:mb-20 sm:mb-10">
       <section className="my-10 space-y-8">
         <div className="space-y-4">
-          <Button to={appPaths.hello} variant="secondary" className="w-full">
-            <ArrowLeft />
+          <Button to={appPaths.hello} variant="secondary" className="w-full text-neutral-400">
+            <ArrowUpLeft />
           </Button>
 
           <Fragment />
@@ -58,9 +56,9 @@ export default function AboutPage() {
         </section>
       </section>
 
-      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-30">
-        <div className="absolute inset-0 backdrop-blur-[6px] s-full"></div>
-        <ReactMatrixAnimation fontColor="#FFFFFF" />
+      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-5">
+        <div className="absolute inset-0 backdrop-blur-[2px] s-full"></div>
+        <ReactMatrixAnimation fontColor="#2ad751" />
       </div>
     </Container>
   )
