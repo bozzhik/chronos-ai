@@ -1,4 +1,5 @@
 @import '../src/assets/stylesheets/fonts.css';
+@import '../src/assets/stylesheets/scrollbar.css';
 
 @tailwind base;
 @tailwind components;
