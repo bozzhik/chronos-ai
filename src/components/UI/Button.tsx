@@ -9,7 +9,7 @@ type Props = {
 }
 
 const buttonStyles = {
-  base: 'px-14 py-2 text-xl uppercase whitespace-no-wrap rounded-[10px] duration-200',
+  base: 'px-14 sm:px-12 py-2 sm:py-1.5 text-xl sm:text-lg uppercase whitespace-no-wrap rounded-[10px] duration-200',
   hover: 'focus:outline-none border-neutral-900 border-[3px] hover:ring-[2px] hover:ring-primary active:ring-[2px] active:ring-primary focus:ring-[2px] focus:ring-primary',
   variants: {
     primary: 'bg-primary text-background font-semibold tracking-tight',
