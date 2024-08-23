@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 
 type Props = {
   to: string
+  blank?: boolean
   children: React.ReactNode
   variant?: 'primary' | 'secondary'
   className?: string
@@ -23,9 +24,9 @@ const buttonStyles = {
 }
 const {base, hover, variants} = buttonStyles
 
-export default function Button({to, children, variant = 'primary', className}: Props) {
+export default function Button({to, blank, children, variant = 'primary', className}: Props) {
   return (
-    <Link to={to} className={cn([base, hover.variants[variant], variants[variant]], className)}>
+    <Link to={to} target={blank ? '_blank' : '_self'} className={cn([base, hover.variants[variant], variants[variant]], className)}>
       {children}
     </Link>
   )
