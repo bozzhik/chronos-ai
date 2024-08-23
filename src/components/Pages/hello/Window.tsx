@@ -11,8 +11,9 @@ const windowData = {
     desktop: 'Immerse yourself in an ultra-realistic AI-powered game where every decision shapes your escape from dynamic scenarios.',
     mobile: 'Dive into an realistic AI game where decisions shape your escape from dynamic scenarios.',
   },
+  badge: `Powered by <a href="https://giga.chat/" target="_blank" class="text-primary hover:underline hover:text-white duration-200">GigaChat</a>`,
 }
-const {heading, text} = windowData
+const {heading, text, badge} = windowData
 
 export default function Window() {
   return (
@@ -27,12 +28,9 @@ export default function Window() {
 
       <div className="flex flex-col items-center justify-between h-full gap-6 px-24 mt-10 sm:gap-4 sm:px-2 xl:mt-7 py-28 sm:py-14">
         <div className="flex flex-col items-center gap-3 sm:gap-4">
-          <div className="inline-flex items-center justify-between border-[1.5px] min-w-0 rounded-full font-mono font-semibold px-3.5 py-1.5 text-xs gap-2 bg-neutral-900 border-neutral-800 uppercase">
-            Powered by
-            <a href="https://giga.chat/" target="_blank" className="duration-200 text-primary hover:underline hover:text-white">
-              GigaChat
-            </a>
-          </div>
+          <div className="inline-flex items-center justify-between border-[1.5px] min-w-0 rounded-full font-mono font-semibold  text-xs gap-2 bg-neutral-900 border-neutral-800 uppercase"></div>
+
+          <mark className="px-3.5 py-1.5 text-xs text-white bg-neutral-900 border-neutral-800 border-[1.5px] rounded-full" dangerouslySetInnerHTML={{__html: badge}} />
 
           <Typography className="text-center" type="heading" text={heading} />
           <Typography className="text-center max-w-[50ch] sm:max-w-[25ch]" text={isMobile ? text.mobile : text.desktop} />

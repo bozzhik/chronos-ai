@@ -37,6 +37,6 @@
   }
 
   mark {
-    @apply bg-primary text-background px-1.5 py-0.5;
+    @apply inline-flex mx-0.5 gap-2 items-center justify-between px-1.5 pt-0.5 pb-[1px] min-w-0 text-sm sm:text-xs font-mono text-primary bg-[#131313] rounded-[4px] uppercase;
   }
 }
