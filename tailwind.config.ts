@@ -14,8 +14,8 @@ const config = {
       sm: {max: '428px'},
     },
     fontFamily: {
-      advent: ['Advent', ...fontFamily.mono],
-      sans: ['Manrope', ...fontFamily.sans],
+      advent: ['var(--font-advent)', ...fontFamily.mono],
+      sans: ['var(--font-manrope)', ...fontFamily.sans],
       mono: [...fontFamily.mono],
     },
     extend: {

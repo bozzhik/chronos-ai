@@ -1,5 +1,4 @@
 import {ReactMatrixAnimation} from 'react-matrix-animation'
-import {appPaths} from '@/lib/constants'
 
 import Container from '#/Global/Container'
 import Button from '#/UI/Button'
@@ -50,7 +49,7 @@ export default function AboutPage() {
     <Container className="max-w-2xl xl:max-w-xl mb-28 xl:mb-20 sm:mb-10">
       <div className="my-10 space-y-8">
         <section className="space-y-4">
-          <Button to={appPaths.hello} variant="secondary" className="w-full gap-1 text-neutral-400">
+          <Button href="/" variant="secondary" className="w-full gap-1 text-neutral-400">
             <ArrowUpLeft /> Back
           </Button>
 
@@ -63,7 +62,7 @@ export default function AboutPage() {
           ))}
         </section>
 
-        <Button to="https://github.com/bozzhik/chronos-ai" blank={true} variant="secondary" className="w-full gap-1 text-neutral-400">
+        <Button href="https://github.com/bozzhik/chronos-ai" blank={true} variant="secondary" className="w-full gap-1 text-neutral-400">
           Source code <ArrowUpRight />
         </Button>
       </div>

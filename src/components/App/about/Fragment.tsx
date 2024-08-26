@@ -1,3 +1,5 @@
+'use client'
+
 import {useRef, useState} from 'react'
 import {VolumeX, Volume2} from 'lucide-react'
 import {Play, Pause} from '##/about/Icons'
@@ -38,7 +40,7 @@ export default function Fragment() {
 
   return (
     <div className="relative w-full h-[40vh] sm:h-[30vh] bg-neutral-900 rounded-xl overflow-hidden p-1.5 sm:pb-6">
-      <video ref={videoRef} className={`object-cover s-full rounded-lg sm:rounded-b-[4px] duration-300 ${isPaused ? 'opacity-50' : ''}`} width="100%" height="100%" muted loop autoPlay playsInline preload="auto">
+      <video ref={videoRef} className={`object-cover s-full rounded-lg sm:rounded-b-[4px] duration-300 ${isPaused ? 'opacity-70' : ''}`} width="100%" height="100%" muted loop autoPlay playsInline preload="auto">
         <source src="videos/fragment.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

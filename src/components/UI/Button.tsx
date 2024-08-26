@@ -1,8 +1,8 @@
 import {cn} from '@/lib/utils'
-import {Link} from 'react-router-dom'
+import Link from 'next/link'
 
 type Props = {
-  to: string
+  href: string
   blank?: boolean
   children: React.ReactNode
   variant?: 'primary' | 'secondary'
@@ -24,9 +24,9 @@ const buttonStyles = {
 }
 const {base, hover, variants} = buttonStyles
 
-export default function Button({to, blank, children, variant = 'primary', className}: Props) {
+export default function Button({href, blank, children, variant = 'primary', className}: Props) {
   return (
-    <Link to={to} target={blank ? '_blank' : '_self'} className={cn([base, hover.variants[variant], variants[variant]], className)}>
+    <Link href={href} target={blank ? '_blank' : '_self'} className={cn([base, hover.variants[variant], variants[variant]], className)}>
       {children}
     </Link>
   )

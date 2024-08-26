@@ -2,7 +2,7 @@ import {ReactMatrixAnimation} from 'react-matrix-animation'
 import {screenHeight} from '@/lib/constants'
 
 import Container from '#/Global/Container'
-import Window from '##/hello/Window'
+import Window from '##/index/Window'
 
 export default function HelloPage() {
   return (

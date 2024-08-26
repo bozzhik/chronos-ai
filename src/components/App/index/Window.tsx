@@ -1,9 +1,8 @@
 import {isMobile} from '@bozzhik/is-mobile'
-import {appPaths} from '@/lib/constants'
 
-import {Link} from 'react-router-dom'
-import Typography from '#/UI/Typography'
+import Link from 'next/link'
 import Button from '#/UI/Button'
+import Typography from '#/UI/Typography'
 
 const windowData = {
   heading: 'Ultra realistic <span class="duration-200 text-primary">AI</span> game',
@@ -37,11 +36,11 @@ export default function Window() {
         </div>
 
         <div className="flex flex-col items-center gap-1.5 sm:gap-1">
-          <Button to={appPaths.playground}>Try to escape</Button>
+          <Button href="/playground">Try to escape</Button>
 
           <div className="group space-x-1.5 font-mono font-normal text-center whitespace-pre-line text-neutral-400">
             <span>what is it?</span>
-            <Link to={appPaths.about} className="underline group-hover:no-underline text-primary">
+            <Link href="/about" className="underline group-hover:no-underline text-primary">
               discover
             </Link>
           </div>

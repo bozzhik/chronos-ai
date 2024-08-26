@@ -1,9 +1,8 @@
-@import '../src/assets/stylesheets/fonts.css';
-@import '../src/assets/stylesheets/scrollbar.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '../assets/stylesheets/scrollbar.css';
 
 @layer base {
   :root {
