@@ -7,7 +7,7 @@ const advent = localFont({
 })
 
 type Props = {
-  type?: 'ai' | 'user'
+  type: 'assistant' | 'user'
   className?: string
   text?: string
   userControls?: string
@@ -15,11 +15,11 @@ type Props = {
 
 export const promptVariants = {
   default: `!leading-none tracking-tight ${advent.className}`,
-  ai: 'text-[90px] xl:text-6xl sm:text-4xl uppercase text-primary [text-shadow:_0_0_15px_var(--primary-shadow)]',
+  assistant: 'text-[90px] xl:text-6xl sm:text-4xl uppercase text-primary placeholder:text-primary [text-shadow:_0_0_15px_var(--primary-shadow)]',
   user: 'text-[70px] xl:text-5xl sm:text-3xl lowercase text-secondary [text-shadow:_0_0_10px_var(--secondary-shadow)]',
 }
 
-export default function Prompt({type = 'ai', className, text, userControls = '>>'}: Props) {
+export default function Prompt({type, className, text, userControls = '>>'}: Props) {
   if (type === 'user') {
     return (
       <div className={cn('inline-flex gap-8 sm:gap-4', promptVariants.default, promptVariants[type], className)}>

@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   })
 
   try {
-    const modelsResponse = await axios.get<ModelsResponse>('https://gigachat.devices.sberbank.ru/api/v1/models', {
+    const response = await axios.get<ModelsResponse>('https://gigachat.devices.sberbank.ru/api/v1/models', {
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${access_token}`,
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
       httpsAgent,
     })
 
-    return NextResponse.json(modelsResponse.data)
+    return NextResponse.json(response.data)
   } catch (error) {
     console.error('Error fetching models:', error)
     return NextResponse.json({error: 'Failed to fetch models'}, {status: 500})

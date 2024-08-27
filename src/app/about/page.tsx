@@ -20,7 +20,7 @@ type Block = {
 
 const BlockComponent: React.FC<{token: Block}> = ({token}) => (
   <article className="space-y-2 sm:space-y-1.5">
-    <Prompt className="!text-5xl sm:!text-4xl" text={token.heading} />
+    <Prompt type="assistant" className="!text-5xl sm:!text-4xl" text={token.heading} />
     <Typography className="text-white text-lg sm:text-base font-light tracking-normal" text={token.text} />
   </article>
 )

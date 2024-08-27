@@ -2,7 +2,7 @@
 
 import Cookies from 'js-cookie'
 import axios from 'axios'
-import {AuthResponse, ModelsResponse} from '@/types/gigachat'
+import {AuthResponse, ModelsResponse, ChatRequest, ChatResponse} from '@/types/gigachat'
 
 export const useGiga = () => {
   const checkModels = async () => {
@@ -52,5 +52,41 @@ export const useGiga = () => {
     }
   }
 
-  return {checkToken, checkModels}
+  const sendMessage = async (message: string) => {
+    const token = Cookies.get('giga_token')
+
+    if (!token) {
+      console.error('No auth token found')
+      return
+    }
+
+    const chatRequest: ChatRequest = {
+      model: 'GigaChat',
+      messages: [
+        {
+          role: 'user',
+          content: message,
+        },
+      ],
+      n: 1,
+      stream: false,
+      update_interval: 0,
+    }
+
+    try {
+      const response = await axios.post<ChatResponse>('/api/giga/chat', chatRequest, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      })
+
+      console.log('Message sent successfully:', response.data)
+      return response.data
+    } catch (error) {
+      console.error('Error sending message:', error)
+    }
+  }
+
+  return {checkToken, checkModels, sendMessage}
 }
