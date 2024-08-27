@@ -15,8 +15,8 @@ export default function PlayPage() {
 
       <section className="fixed bottom-0 w-full bg-background">
         <div className={cn(appContainer, 'py-7 animate-pulse')}>
-          <Link href="/" className={cn(promptVariants.default, promptVariants.user, 'inline-flex gap-8 sm:gap-4 hover:translate-x-1.5 duration-300')}>
-            /exit
+          <Link href="/" className={cn(promptVariants.default, promptVariants.user, 'inline-flex gap-8 sm:gap-4 ml-14 hover:translate-x-1.5 duration-300')}>
+            {`>>`} exit
           </Link>
         </div>
       </section>
