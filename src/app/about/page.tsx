@@ -67,7 +67,7 @@ export default function AboutPage() {
         </Button>
       </div>
 
-      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-5">
+      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-15">
         <div className="absolute inset-0 backdrop-blur-[2px] s-full"></div>
         <ReactMatrixAnimation fontColor="#2ad751" />
       </div>

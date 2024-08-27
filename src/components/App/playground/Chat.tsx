@@ -1,12 +1,12 @@
 'use client'
 
 import {useEffect} from 'react'
-import {useAuth} from '@/hooks/useAuth'
+import {useGiga} from '@/hooks/useGiga'
 
 import Prompt from '#/UI/Prompt'
 
 export default function Chat() {
-  const {checkToken} = useAuth()
+  const {checkToken} = useGiga()
 
   useEffect(() => {
     checkToken()

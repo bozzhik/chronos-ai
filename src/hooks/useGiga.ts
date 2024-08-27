@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import axios from 'axios'
 import {AuthResponse} from '@/types/gigachat'
 
-export const useAuth = () => {
+export const useGiga = () => {
   const checkToken = async () => {
     const token = Cookies.get('giga_token')
 
