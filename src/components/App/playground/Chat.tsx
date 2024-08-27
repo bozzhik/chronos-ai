@@ -6,12 +6,11 @@ import {useGiga} from '@/hooks/useGiga'
 import Prompt from '#/UI/Prompt'
 
 export default function Chat() {
-  const {checkToken, checkModels} = useGiga()
+  const {checkToken} = useGiga()
 
   useEffect(() => {
     checkToken()
-    checkModels()
-  }, [checkToken, checkModels])
+  }, [checkToken])
 
   return (
     <section className="flex flex-col gap-16 xl:gap-12 sm:gap-3">
