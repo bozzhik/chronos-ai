@@ -2,7 +2,7 @@
 
 import Cookies from 'js-cookie'
 import axios from 'axios'
-import {AuthResponse} from '@/types/gigachat'
+import {AuthResponse, ModelsResponse} from '@/types/gigachat'
 
 export const useGiga = () => {
   const checkToken = async () => {
@@ -23,5 +23,29 @@ export const useGiga = () => {
     }
   }
 
-  return {checkToken}
+  const checkModels = async () => {
+    const token = Cookies.get('giga_token')
+
+    if (!token) {
+      console.error('No auth token found')
+      return
+    }
+
+    try {
+      const response = await axios.get<ModelsResponse>('/api/giga/models', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const modelsData = response.data.data.map((model) => model.id)
+      Cookies.set('giga_models', JSON.stringify(modelsData))
+
+      console.log('Models fetched successfully:', response.data)
+    } catch (error) {
+      console.error('Error fetching models:', error)
+    }
+  }
+
+  return {checkToken, checkModels}
 }
