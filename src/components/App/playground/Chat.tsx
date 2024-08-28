@@ -27,6 +27,10 @@ export default function Chat() {
 
           const initialPrompt = 'Generate a starting situation for the game'
           const response = await sendMessage(initialPrompt)
+          if (response && 'error' in response) {
+            console.error('Error response received:', response.error)
+            return
+          }
           if (response) {
             setIsLoading(false)
             setPrompts((prevPrompts) => [...prevPrompts, {type: 'assistant', text: response.choices[0].message.content}])
@@ -58,6 +62,12 @@ export default function Chat() {
     if (message === '') return
 
     const response = await sendMessage(message)
+
+    if (response && 'error' in response) {
+      console.error('Error response received:', response.error)
+      return
+    }
+
     if (response) {
       setIsInputReadOnly(true)
       setPrompts((prevPrompts) => [...prevPrompts, {type: 'user', text: inputText}])

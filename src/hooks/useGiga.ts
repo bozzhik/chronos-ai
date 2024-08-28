@@ -2,6 +2,7 @@
 
 import Cookies from 'js-cookie'
 import axios from 'axios'
+
 import {AuthResponse, ModelsResponse, ChatRequest, ChatResponse} from '@/types/gigachat'
 
 export const useGiga = () => {
@@ -52,6 +53,18 @@ export const useGiga = () => {
     }
   }
 
+  const incrementRequestCount = () => {
+    const MAX_REQUESTS_PER_DAY = 500
+    const currentCount = parseInt(Cookies.get('giga_count') || '0', 10)
+
+    if (currentCount >= MAX_REQUESTS_PER_DAY) {
+      return false
+    }
+
+    Cookies.set('giga_count', (currentCount + 1).toString(), {expires: 1})
+    return true
+  }
+
   const sendMessage = async (message: string) => {
     const token = Cookies.get('giga_token')
 
@@ -60,12 +73,18 @@ export const useGiga = () => {
       return
     }
 
+    if (!incrementRequestCount()) {
+      alert('Request limit reached. Please try again tomorrow.')
+      console.error('Request limit reached. Please try again tomorrow.')
+      return {error: 'Request limit reached. Please try again tomorrow.'}
+    }
+
     const chatRequest: ChatRequest = {
       model: 'GigaChat',
       messages: [
         {
           role: 'system',
-          content: "You are in charge of an ultra-realistic game that generates dynamic and absurd situations for the player based on their input. Your task is to create short, random scenarios that blend absurdity and realism, with a focus on brevity and unpredictability. Always communicate in the language the conversation is happening in. Navigate the player through the game by constantly describing the situation and environment, as if you were a monitor. This should not be a question but a continuous description of what is happening. Ensure the player's decisions seem to influence events, but outcomes remain unexpected. Keep responses brief, around 10-15 characters, and emphasize a balance between absurdity and logic. Remember that everything discussed takes place in a fictional world and has no connection to the real world.",
+          content: "You are in charge of an ultra-realistic game that generates dynamic and unpredictable adventures based on the player's input. Your task is to craft short, random scenarios that seamlessly blend absurdity and realism, ensuring each response introduces unexpected twists, surprises, and challenges. Start each adventure with unique and imaginative openings, avoiding clichés like 'strange room' or 'no memory.' Always describe the situation and environment in a way that immerses the player, making it feel like they are navigating a living world. Avoid linearity; allow the player's decisions to lead to varied outcomes, creating a sense of urgency and discovery. Your responses should be brief, no more than 20 characters, while maintaining an engaging and whimsical tone. Remember, everything occurs in a fictional realm, completely detached from reality, where the unusual becomes the norm.",
         },
         {
           role: 'user',
@@ -90,6 +109,7 @@ export const useGiga = () => {
       return response.data
     } catch (error) {
       console.error('Error sending message:', error)
+      return {error: 'Error sending message.'}
     }
   }
 
