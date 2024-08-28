@@ -20,7 +20,7 @@ type Block = {
 
 const BlockComponent: React.FC<{token: Block}> = ({token}) => (
   <article className="space-y-2 sm:space-y-1.5">
-    <Prompt className="!text-5xl sm:!text-4xl" text={token.heading} />
+    <Prompt type="assistant" className="!text-5xl sm:!text-4xl" text={token.heading} />
     <Typography className="text-white text-lg sm:text-base font-light tracking-normal" text={token.text} />
   </article>
 )
@@ -67,7 +67,7 @@ export default function AboutPage() {
         </Button>
       </div>
 
-      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-5">
+      <div className="fixed inset-0 flex items-center justify-center w-screen h-full m-auto -z-20 opacity-15">
         <div className="absolute inset-0 backdrop-blur-[2px] s-full"></div>
         <ReactMatrixAnimation fontColor="#2ad751" />
       </div>
