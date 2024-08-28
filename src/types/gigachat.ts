@@ -21,6 +21,7 @@ export type ChatRequest = {
   n: number
   stream: boolean
   update_interval: number
+  max_tokens?: number
 }
 
 export type ChatResponse = {

@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     return NextResponse.json({error: 'Access token is required'}, {status: 400})
   }
 
-  const {model, messages, n, stream, update_interval}: ChatRequest = await request.json()
+  const {model, messages, n, stream, update_interval, max_tokens}: ChatRequest = await request.json()
 
   const httpsAgent = new Agent({
     rejectUnauthorized: false,
@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     n,
     stream,
     update_interval,
+    max_tokens,
   })
 
   try {

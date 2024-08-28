@@ -75,6 +75,7 @@ export const useGiga = () => {
       n: 1,
       stream: false,
       update_interval: 0,
+      max_tokens: 40,
     }
 
     try {
