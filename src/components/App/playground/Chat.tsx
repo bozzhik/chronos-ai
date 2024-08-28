@@ -1,29 +1,54 @@
 'use client'
 
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {useGiga} from '@/hooks/useGiga'
 import {cn} from '@/lib/utils'
-
 import Prompt, {promptVariants} from '#/UI/Prompt'
-const inputPlaceholders = {
-  default: ' >> your message..',
-  short: ' >> ',
-}
+
+const inputPlaceholder = ' >> '
 
 export default function Chat() {
   const {checkToken, sendMessage} = useGiga()
-  const [inputText, setInputText] = useState<string>(inputPlaceholders.default)
+  const [inputText, setInputText] = useState<string>(inputPlaceholder)
   const [prompts, setPrompts] = useState<{type: 'user' | 'assistant'; text: string}[]>([])
   const [isInputReadOnly, setIsInputReadOnly] = useState<boolean>(false)
-  const [placeholder, setPlaceholder] = useState<string>(inputPlaceholders.default)
+  const [placeholder, setPlaceholder] = useState<string>(inputPlaceholder)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const initialSituationGenerated = useRef<boolean>(false)
 
   useEffect(() => {
-    checkToken()
-  }, [checkToken])
+    const initializeChat = async () => {
+      try {
+        await checkToken()
+
+        if (!initialSituationGenerated.current) {
+          initialSituationGenerated.current = true
+
+          const initialPrompt = 'Generate a starting situation for the game'
+          const response = await sendMessage(initialPrompt)
+          if (response) {
+            setIsLoading(false)
+            setPrompts((prevPrompts) => [...prevPrompts, {type: 'assistant', text: response.choices[0].message.content}])
+          }
+        }
+      } catch (error) {
+        console.error('Error during token check or initial message generation:', error)
+      }
+    }
+
+    initializeChat()
+  }, [checkToken, sendMessage])
+
+  useEffect(() => {
+    if (!isLoading && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [isLoading])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (value.startsWith(inputPlaceholders.short)) {
+    if (value.startsWith(inputPlaceholder)) {
       setInputText(value)
     }
   }
@@ -39,8 +64,8 @@ export default function Chat() {
 
       setPrompts((prevPrompts) => [...prevPrompts, {type: 'assistant', text: response.choices[0].message.content}])
 
-      setInputText(inputPlaceholders.default)
-      setPlaceholder(inputPlaceholders.default)
+      setInputText(inputPlaceholder)
+      setPlaceholder(inputPlaceholder)
       setIsInputReadOnly(false)
     }
   }
@@ -52,8 +77,12 @@ export default function Chat() {
   }
 
   const handleFocus = () => {
-    setInputText(inputPlaceholders.short)
-    setPlaceholder(inputPlaceholders.short)
+    setInputText(inputPlaceholder)
+    setPlaceholder(inputPlaceholder)
+  }
+
+  if (isLoading) {
+    return <Prompt type="assistant" text="Loading.." />
   }
 
   return (
@@ -63,7 +92,17 @@ export default function Chat() {
       ))}
 
       <div className={cn('w-full ml-9', promptVariants.default, promptVariants.user)}>
-        <input type="text" className="w-full bg-transparent border-none caret-secondary outline-none placeholder:pl-2 placeholder:text-secondary [text-shadow:_0_0_10px_var(--secondary-shadow)]" value={inputText} onChange={handleInputChange} onKeyPress={handleKeyPress} onFocus={handleFocus} readOnly={isInputReadOnly} placeholder={placeholder} />
+        <input
+          type="text"
+          ref={inputRef}
+          value={inputText}
+          onChange={handleInputChange}
+          onFocus={handleFocus}
+          onKeyPress={handleKeyPress} // Send on "Enter"
+          readOnly={isInputReadOnly}
+          placeholder={placeholder}
+          className="w-full bg-transparent border-none caret-secondary outline-none placeholder:pl-2 placeholder:text-secondary [text-shadow:_0_0_10px_var(--secondary-shadow)]"
+        />
       </div>
     </section>
   )
