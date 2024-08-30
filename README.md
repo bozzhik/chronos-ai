@@ -1,8 +1,11 @@
 # ⚡️ultra-realistic game (AI)
 
+![Untitled-1](https://github.com/user-attachments/assets/a6d23569-34cd-4961-81e0-7393eae19dfb)
+
 - **Framework**: [Next.js](https://nextjs.org/)
 - **AI Model**: [Giga Chat](https://giga.chat/)
 - **Deployment**: [Vercel](https://vercel.com)
+
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Analytics**: [Yandex Metrika](https://metrika.yandex.ru/promo/product)
 
