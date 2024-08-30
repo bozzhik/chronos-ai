@@ -38,7 +38,7 @@ export const useGiga = () => {
 
     if (!token) {
       try {
-        const response = await axios.get(`/api/giga/auth`)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/giga/auth`)
         const {access_token, expires_at} = response.data as AuthResponse
 
         const expiresInDays = (expires_at - Date.now()) / (1000 * 60 * 60 * 24)
