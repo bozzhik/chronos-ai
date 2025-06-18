@@ -26,7 +26,11 @@ export async function GET() {
       httpsAgent,
     })
 
-    return NextResponse.json(response.data)
+    const expiresAt = Date.now() + 30 * 60 * 1000
+    return NextResponse.json({
+      ...response.data,
+      expires_at: expiresAt,
+    })
   } catch (error) {
     console.error('Error fetching auth token:', error)
     return NextResponse.json({error: 'Failed to fetch auth token'}, {status: 500})

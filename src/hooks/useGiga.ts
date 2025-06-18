@@ -35,14 +35,15 @@ export const useGiga = () => {
 
   const checkToken = async () => {
     const token = Cookies.get('giga_token')
+    const tokenExpiry = Cookies.get('giga_token_expiry')
 
-    if (!token) {
+    if (!token || !tokenExpiry || Date.now() > parseInt(tokenExpiry)) {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_URL}/api/giga/auth`)
+        const response = await axios.get('/api/giga/auth')
         const {access_token, expires_at} = response.data as AuthResponse
 
-        const expiresInDays = (expires_at - Date.now()) / (1000 * 60 * 60 * 24)
-        Cookies.set('giga_token', access_token, {expires: expiresInDays})
+        Cookies.set('giga_token', access_token)
+        Cookies.set('giga_token_expiry', expires_at.toString())
 
         console.log('Token set successfully')
 
@@ -50,6 +51,8 @@ export const useGiga = () => {
       } catch (error) {
         console.error('Error fetching auth token:', error)
       }
+    } else {
+      await checkModels()
     }
   }
 
